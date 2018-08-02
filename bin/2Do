@@ -1,0 +1,25 @@
+## Actions 2Do
+
+* Use this study to develop the "Takeoff performance" Analysis
+Problems assiciated with takeoff performance
+- lack of performance during takeoff run
+- wromg data input on FMS (focus on weight but all other inputs are important, such as the speeds, V1, Vr and V2)
+- Corrrect FMS programming but selected the wrong taxiway or runway to perform the takeoff
+
+
+* get the flight phases FM_FWC to a separate parameter to avoid using the original "flightdata" data frame
+
+* determine VR out of the data
+
+* integrate TO plots from Rtoff (create shiny?)
+
+* Aerodynamic GW computation -> Compare with the values introduced in the FMS (Rationale -> As FDM is dedicated to find trends out or the normal operation, this procedure will capture those flights that have input errors in the weght still manageable, i.e. the A/C was able to fly but an error was introduced manually - This procedure depends highly on the system errors from both sides!!)
+Ultimately these are the cases the are still able to go to the air despite some wrong entry of the weight on the FMS. The serious incidents that produce A/C damage are not relevant to FDM as there are other consequencies and the main goal is to find the precursors to avoid those kind of situations.
+
+
+** Inconsistent speed indications during takeoff **
+- acceleration should correspond to dv/dt -> v should be explored as IAS (conting with the ground effect) or GS (this one may not reflect the error in speed indications) - to explore further with flight data 
+- The true airspeed is immerged into the parameter IAS. Ground effect has to be removed -> Kalman filter (Rauch-Tung-Striebel (RTS) Smoother -Advanced Kalman Filter used on the aircraft for navigation purposes. This filter has the advantage to use past and future data which is possible in FDM due to the fact that the recordings have the future values availabe. This is not the case for on-board systems) 
+
+
+
